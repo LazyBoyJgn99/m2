@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.ipcoffee</groupId>
+        <artifactId>ipcoffee</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+
+    <artifactId>ipcoffee-consumer</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.ipcoffee</groupId>
+            <artifactId>ipcoffee-springboot-consumer</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--使用 freemarker-->
+        <dependency>
+            <groupId>com.ipcoffee</groupId>
+            <artifactId>ipcoffee-springboot-freemarker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ipcoffee</groupId>
+            <artifactId>ipcoffee-springboot-redis</artifactId>
+        </dependency>
+
+        <!--使用 html 或者 thymeleaf -->
+        <dependency>
+            <groupId>com.ipcoffee</groupId>
+            <artifactId>ipcoffee-springboot-html</artifactId>
+        </dependency>
+
+        <!-- 使用 mysql -->
+        <dependency>
+            <groupId>com.ipcoffee</groupId>
+            <artifactId>ipcoffee-springboot-mysql</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.solr/solr-solrj -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>5.4.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.53</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.gitee.qdbp.thirdparty/ueditor -->
+        <dependency>
+            <groupId>com.gitee.qdbp.thirdparty</groupId>
+            <artifactId>ueditor</artifactId>
+            <version>1.4.3.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+
+        <!-- 使用 mongodb -->
+       <!-- <dependency>
+            <groupId>com.ipcoffee</groupId>
+            <artifactId>ipcoffee-springboot-mongodb</artifactId>
+        </dependency>-->
+
+        <!-- 定时任务 -->
+        <!--<dependency>-->
+            <!--<groupId>com.ipcoffee</groupId>-->
+            <!--<artifactId>ipcoffee-framework-scheduler</artifactId>-->
+        <!--</dependency>-->
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <jvmArguments>-Dfile.encoding=${file.encoding}</jvmArguments>
+                    <!--fork :  如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
+                    <fork>true</fork>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${file.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>${file.encoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>exec-npm-install</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                            <workingDirectory>${basedir}/../ipcoffee-web</workingDirectory>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>exec-npm-run-build</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
+                            </arguments>
+                            <workingDirectory>${basedir}/../ipcoffee-web</workingDirectory>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+
+            <!--<plugin>-->
+                <!--<artifactId>maven-antrun-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>default-cli</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<target>-->
+                                <!--<zip destfile="${project.build.directory}/${project.artifactId}-classesAndLib.zip" update="true" encoding="${file.encoding}">-->
+                                    <!--<zipfileset dir="${project.build.directory}" casesensitive="no">-->
+                                        <!--<include name="*.jar" />-->
+                                    <!--</zipfileset>-->
+                                <!--</zip>-->
+                                <!--<zip destfile="${project.build.directory}/${project.artifactId}-classesAndLib.zip" update="true" encoding="${file.encoding}">-->
+                                    <!--<zipfileset dir="${project.build.outputDirectory}" casesensitive="no" prefix="classes">-->
+                                        <!--<include name="*.properties" />-->
+                                    <!--</zipfileset>-->
+                                <!--</zip>-->
+                            <!--</target>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <!--<profiles>-->
+        <!--<profile>-->
+            <!--<id>complete</id>-->
+            <!--<build>-->
+                <!--<plugins>-->
+                    <!--<plugin>-->
+                        <!--<artifactId>maven-antrun-plugin</artifactId>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>default-cli</id>-->
+                                <!--<phase>package</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>run</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<target>-->
+                                        <!--<zip destfile="${project.build.directory}/${project.build.finalName}.bin.zip" update="true" encoding="${file.encoding}">-->
+                                            <!--<zipfileset dir="src/main/assembly/bin" casesensitive="no" filemode="755" prefix="bin">-->
+                                                <!--<include name="**/*.*" />-->
+                                            <!--</zipfileset>-->
+                                        <!--</zip>-->
+                                        <!--<zip destfile="${project.build.directory}/${project.build.finalName}.bin.zip" update="true" encoding="${file.encoding}">-->
+                                            <!--<zipfileset dir="${project.build.outputDirectory}" casesensitive="no" prefix="lib/classes">-->
+                                                <!--<include name="*.properties" />-->
+                                                <!--<include name="*.yml" />-->
+                                            <!--</zipfileset>-->
+                                        <!--</zip>-->
+                                        <!--<zip destfile="${project.build.directory}/${project.build.finalName}.bin.zip" update="true" encoding="${file.encoding}">-->
+                                            <!--<zipfileset dir="${project.build.directory}" casesensitive="no" prefix="lib">-->
+                                                <!--<include name="${project.build.finalName}.jar" />-->
+                                            <!--</zipfileset>-->
+                                        <!--</zip>-->
+                                    <!--</target>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
+                <!--</plugins>-->
+            <!--</build>-->
+        <!--</profile>-->
+    <!--</profiles>-->
+
+
+</project>

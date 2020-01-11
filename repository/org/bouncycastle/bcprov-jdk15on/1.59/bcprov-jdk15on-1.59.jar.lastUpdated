@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Nov 10 16:32:01 CST 2019
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1573374721989
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.bouncycastle\:bcprov-jdk15on\:jar\:1.59 from/to central (https\://repo.maven.apache.org/maven2)\: Timeout while waiting for concurrent download of /Users/jingening/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.59/bcprov-jdk15on-1.59.jar.part to progress

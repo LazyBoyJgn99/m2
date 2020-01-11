@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Dec 08 19:33:27 CST 2019
+https\://repository.apache.org/content/groups/snapshots/.lastUpdated=1575804807535
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1573377717955
+https\://repository.apache.org/content/groups/snapshots/.error=
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.pdfbox\:pdfbox\:jar\:2.0.4 from/to central (https\://repo.maven.apache.org/maven2)\: GET request of\: org/apache/pdfbox/pdfbox/2.0.4/pdfbox-2.0.4.jar from central failed

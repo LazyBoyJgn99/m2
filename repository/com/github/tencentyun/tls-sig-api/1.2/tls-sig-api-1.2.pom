@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.tencentyun</groupId>
+  <artifactId>tls-sig-api</artifactId>
+  <version>1.2</version>
+  <name>tls-sig-api</name>
+  <description>tls sig api for java</description>
+  <url>https://github.com/tencentyun/tls-sig-api-java</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>weijunyi</id>
+      <name>weijunyi</name>
+      <email>weijunyi@tencent.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/tencentyun/tls-sig-api-java.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:tencentyun/tls-sig-api-java.git</developerConnection>
+    <url>https://github.com/tencentyun/tls-sig-api-java</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk15on</artifactId>
+      <version>1.59</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>1.59</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20180130</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

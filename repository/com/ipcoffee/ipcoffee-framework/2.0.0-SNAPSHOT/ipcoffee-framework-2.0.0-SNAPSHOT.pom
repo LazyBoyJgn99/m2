@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ipcoffee</groupId>
+    <artifactId>ipcoffee-framework</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>ipcoffee-framework</name>
+    <url>http://maven.apache.org</url>
+
+
+    <repositories>
+        <repository>
+            <id>releases</id>
+            <url>https://nexus.g2work.com/repository/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>cloud-releases</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>cloud-snapshots</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>aliyun maven</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>cloud-thirdparty</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/thirdparty/</url>
+        </repository>
+
+        <repository>
+            <id>thirdparty</id>
+            <url>${nexus.url}/thirdparty/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
+
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>cloud-snapshots</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>cloud-releases</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
+    <modules>
+        <module>ipcoffee-framework-exception</module>
+        <module>ipcoffee-utils</module>
+        <module>ipcoffee-framework-health</module>
+        <module>ipcoffee-framework-config</module>
+        <module>ipcoffee-framework-common</module>
+        <module>ipcoffee-framework-web</module>
+        <!-- <module>ipcoffee-framework-common-extend</module> -->
+        <!--<module>ipcoffee-framework-support</module>-->
+        <module>ipcoffee-framework-support-persistence</module>
+        <module>ipcoffee-framework-support-mysql</module>
+        <module>ipcoffee-framework-support-mongo</module>
+        <module>ipcoffee-framework-support-rich</module>
+        <module>ipcoffee-framework-support-cache</module>
+        <module>ipcoffee-framework-base</module>
+        <module>ipcoffee-framework-consumer</module>
+        <module>ipcoffee-framework-provider</module>
+        <module>ipcoffee-framework-annotation</module>
+        <module>ipcoffee-framework-mq</module>
+        <module>ipcoffee-framework-scheduler</module>
+        <module>ipcoffee-framework-log-log4j</module>
+        <module>ipcoffee-framework-dns</module>
+
+    </modules>
+
+    <properties>
+        <nexus.url>http://39.106.32.139:8088/nexus/content/repositories</nexus.url>
+        <file.encoding>UTF-8</file.encoding>
+        <java.version>1.8</java.version>
+        <ipcoffee.dependency.thirds.version>2.0-SNAPSHOT</ipcoffee.dependency.thirds.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.ipcoffee</groupId>
+                <artifactId>ipcoffee-dependency-thirds</artifactId>
+                <version>${ipcoffee.dependency.thirds.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ipcoffee</groupId>
+                <artifactId>ipcoffee-flume-client</artifactId>
+                <version>1.4.4-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dajia</groupId>
+                <artifactId>dajia-module-config</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.20</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.3</version>
+                    <configuration>
+                        <charset>${file.encoding}</charset>
+                        <aggregate>true</aggregate>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                    <configuration>
+                        <encoding>${file.encoding}</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.2</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${file.encoding}</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

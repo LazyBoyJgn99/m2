@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ipcoffee</groupId>
+    <artifactId>ipcoffee-springboot-parent</artifactId>
+    <version>2.0-SNAPSHOT</version>
+    <modules>
+        <module>ipcoffee-springboot-zkconfig</module>
+        <module>ipcoffee-springboot-provider</module>
+        <module>ipcoffee-springboot-consumer</module>
+        <module>ipcoffee-springboot-redis</module>
+        <module>ipcoffee-springboot-mysql</module>
+        <module>ipcoffee-springboot-mongodb</module>
+        <module>ipcoffee-springboot-dubbo-consumer</module>
+        <module>ipcoffee-springboot-dubbo-provider</module>
+        <module>ipcoffee-springboot-freemarker</module>
+        <module>ipcoffee-springboot-html</module>
+        <module>ipcoffee-springboot-edas-provider</module>
+        <module>ipcoffee-springboot-edas-consumer</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>ipcoffee-springboot-parent</name>
+    <url>http://maven.apache.org</url>
+
+    <repositories>
+        <repository>
+            <id>cloud-releases</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>cloud-snapshots</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>aliyun maven</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>cloud-thirdparty</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/thirdparty/</url>
+        </repository>
+
+        <repository>
+            <id>central</id>
+            <url>http://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>edas-oss-central</id>
+            <name>taobao mirror central</name>
+            <url>http://edas-public.oss-cn-hangzhou.aliyuncs.com/repository</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>cloud-snapshots</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>cloud-releases</id>
+            <url>http://39.106.32.139:8088/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <java.version>1.8</java.version>
+        <spring.boot.version>1.5.4.RELEASE</spring.boot.version>
+        <spring.version>4.3.9.RELEASE</spring.version>
+        <spring.data.version>Ingalls-SR4</spring.data.version>
+        <ipcoffee.dependency.internal>2.0-SNAPSHOT</ipcoffee.dependency.internal>
+        <ipcoffee.dependency.thirds>2.0-SNAPSHOT</ipcoffee.dependency.thirds>
+        <nexus.url>http://39.106.32.139:8088/nexus/content/repositories</nexus.url>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.ipcoffee</groupId>
+                <artifactId>ipcoffee-dependency-internal</artifactId>
+                <version>${ipcoffee.dependency.internal}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ipcoffee</groupId>
+                <artifactId>ipcoffee-dependency-thirds</artifactId>
+                <version>${ipcoffee.dependency.thirds}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-log4j</artifactId>
+                <version>1.3.8.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring.data.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+</project>

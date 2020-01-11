@@ -1,0 +1,9 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Jul 17 11:50:49 CST 2019
+http\://61.135.24.220\:8088/nexus/content/repositories/releases/.lastUpdated=1563334912735
+http\://repository.jboss.com/maven2/.lastUpdated=1563334909378
+http\://61.135.24.220\:8088/nexus/content/repositories/releases/.error=
+http\://maven.aliyun.com/nexus/content/groups/public/.error=Could not transfer artifact org.elasticsearch\:elasticsearch\:jar\:2.4.5 from/to aliyun maven (http\://maven.aliyun.com/nexus/content/groups/public)\: GET request of\: org/elasticsearch/elasticsearch/2.4.5/elasticsearch-2.4.5.jar from aliyun maven failed
+http\://repository.jboss.com/maven2/.error=
+@default-aliyun\ maven-http\://maven.aliyun.com/nexus/content/groups/public/.lastUpdated=1563335165351
+http\://maven.nuxeo.org/nexus/content/groups/public/.lastUpdated=1563335449306
